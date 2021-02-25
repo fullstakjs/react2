@@ -8,14 +8,23 @@ function App() {
   const [display, setdisplay] = useState(data)
 
   const handleChange=(e)=>{
-    // console.log(e.target.value);
-    setfilter(e.target.value);
+    const val =e.target.value;
+    setfilter(e.target.value)
+    var newstate=display.filter(data=>data.name.includes(filter)).map((names)=>names)
+    console.log(newstate)
+    
+  
 
-    const newdata=display.filter((data) => data.id.includes(filter))
-    console.log(newdata)
-    setdisplay(newdata)
-
-
+  while(val){
+    setdisplay(newstate);
+  }
+  // if(val===""){
+  //   setdisplay(data)
+  // }
+  // if(val==0) {
+  //   setdisplay(newstate)
+  // }
+  
   }
   return (
     <div className="App">
