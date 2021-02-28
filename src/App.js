@@ -8,34 +8,34 @@ function App() {
   const [display, setdisplay] = useState(data)
 
   const handleChange=(e)=>{
-    const val =e.target.value;
-    setfilter(e.target.value)
-    var newstate=display.filter(data=>data.name.includes(filter)).map((names)=>names)
-    console.log(newstate)
     
-  
+    setfilter(e.target.value)
+    const filtered = display.filter(data=>data.name.toLowerCase().startsWith(e.target.value));
 
-  while(val){
-    setdisplay(newstate);
-  }
-  // if(val===""){
-  //   setdisplay(data)
-  // }
-  // if(val==0) {
-  //   setdisplay(newstate)
-  // }
-  
+    console.log(filtered)
+
+    setdisplay(filtered);
+
+    if(e.target.value===""){
+      setdisplay(data);
+    }
+    if(filter.pop()){
+      console.log(filter);
+    }
+    
   }
   return (
     <div className="App">
       <h1>React filter app</h1>
       <input type="text" value={filter} onChange={handleChange}/>
-          <table>
+          <table cellSpacing={5} cellPadding={5}>
             <thead>
               <tr>
+              
               <th>id</th>
               <th>name</th>
-              <th>mini amount in $.</th>
+              <th>user name</th>
+              <th>email</th>
               </tr>
               
             </thead>
@@ -46,7 +46,9 @@ function App() {
               <tr key={data.id}>
                 <td>{data.id}</td>
                 <td>{ data.name } </td>
-                <td>{data.min_size}</td>
+                <td>{data.username}</td>
+                <td>{data.email}</td>
+                
               </tr>
               )
             })}
