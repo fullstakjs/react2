@@ -12,16 +12,12 @@ function App() {
     setfilter(e.target.value)
     const filtered = display.filter(data=>data.name.toLowerCase().startsWith(e.target.value));
 
-    console.log(filtered)
-
     setdisplay(filtered);
 
     if(e.target.value===""){
       setdisplay(data);
     }
-    if(filter.pop()){
-      console.log(filter);
-    }
+    
     
   }
   return (
